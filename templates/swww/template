@@ -1,0 +1,32 @@
+# Template file for 'swww'
+pkgname=swww
+version=0.7.2
+revision=1
+build_style=cargo
+hostmakedepends=""
+makedepends="scdoc pkg-config libxkbcommon-devel"
+depends="lz4"
+short_desc="Efficient animated wallpaper daemon for wayland, controlled at runtime"
+maintainer="Posi+ive"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Horus645/swww"
+changelog="https://github.com/Horus645/swww/blob/main/CHANGELOG.md"
+distfiles="https://github.com/Horus645/swww/archive/refs/tags/v${version}.tar.gz"
+checksum=bb961577387aefd64b54090b3a7d0db5a393120edc24fe71d149e77fe132025c
+
+do_install() {
+	vbin target/x86_64-unknown-linux-gnu/release/swww
+	vbin target/x86_64-unknown-linux-gnu/release/swww-daemon
+
+	vman doc/generated/swww-clear.1
+	vman doc/generated/swww-daemon.1
+	vman doc/generated/swww-img.1
+	vman doc/generated/swww-init.1
+	vman doc/generated/swww-kill.1
+	vman doc/generated/swww-query.1
+	vman doc/generated/swww.1
+}
+
+post_build() {
+	./doc/gen.sh
+}
