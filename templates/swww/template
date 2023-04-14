@@ -25,6 +25,9 @@ do_install() {
 	vman doc/generated/swww-kill.1
 	vman doc/generated/swww-query.1
 	vman doc/generated/swww.1
+	
+	vcompletion completions/swww.bash bash
+	vcompletion completions/swww.fish fish
 }
 
 post_build() {
