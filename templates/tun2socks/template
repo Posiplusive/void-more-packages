@@ -2,7 +2,6 @@
 pkgname=tun2socks
 version=2.5.2
 revision=1
-archs="i686 x86_64"
 build_style=go
 go_import_path="github.com/xjasonlyu/tun2socks/v2"
 short_desc="Proxies everything through many protocols"
